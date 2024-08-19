@@ -19,6 +19,9 @@ window.onload = function(){
         }
     });
     let theme = document.cookie; 
+    if (theme != "light" && theme != "dark") {
+        theme = "light";
+    }
     document.documentElement.setAttribute('data-theme', theme);
     setGame();
 }
