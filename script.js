@@ -5,8 +5,24 @@ var columns = 4;
 
 
 window.onload = function(){
+    DarkModeButton.addEventListener("click", () => {
+        let theme = document.documentElement.getAttribute('data-theme') == "light" ? "dark" : "light";
+        document.documentElement.setAttribute('data-theme', theme);
+        document.cookie = theme;
+        if (theme == "light") {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+        }
+        else {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        }
+    });
+    let theme = document.cookie; 
+    document.documentElement.setAttribute('data-theme', theme);
     setGame();
 }
+
 
 
 function setGame(){
@@ -29,7 +45,8 @@ function setGame(){
     setTwo();
     setTwo();
 }
-function hasEmptytile(){
+
+function hasEmptyTile(){
     for (let r=0; r < rows; r++) {
         for (let c=0; c < columns; c++) {
             if (board[r][c] == 0) {return true;};
@@ -38,7 +55,7 @@ function hasEmptytile(){
     return false;
 }
 function setTwo(){
-    if (!hasEmptytile()) {
+    if (!hasEmptyTile()) {
         return
     }
     let found = false;
@@ -131,7 +148,6 @@ function Down() {
         row.reverse()
         row = slide(row);
         row.reverse()
-   
         for(let r=0; r< columns;r++) {
             board[r][c] =row[r]
             let tile = document.getElementById(r.toString()+ "-" + c.toString());
@@ -154,9 +170,9 @@ function Up() {
 }
 
 document.addEventListener("keyup",(e) => {
-    if (e.code == "ArrowLeft") {Left();setTwo();}
-    else if (e.code == "ArrowRight") {Right();setTwo();}
-    else if (e.code == "ArrowDown") {Down();setTwo();}
-    else if (e.code == "ArrowUp") {Up();setTwo();}
+    if (e.code == "ArrowLeft" || e.code == "KeyA") {Left();setTwo();}
+    else if (e.code == "ArrowRight" || e.code == "KeyD") {Right();setTwo();}
+    else if (e.code == "ArrowDown" || e.code == "KeyS") {Down();setTwo();}
+    else if (e.code == "ArrowUp"|| e.code == "KeyW") {Up();setTwo();}
     document.getElementById("score").innerText= score;
 })

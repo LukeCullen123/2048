@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" date-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +7,19 @@
     <title>2048</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 <body>
-    <h1>2048</h1>
+    
+    <h1 class="title">2048</h1>
     <hr>
     <h2>Score <span id="score">0</span></h2>
     <div id="board"></div>
+    <footer>
+        <button id="DarkModeButton" class="toggle-button">
+            <i id="icon" class="fas fa-sun"></i>
+        </button>
+    </footer>
 </body>
 </html>
